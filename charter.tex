@@ -84,7 +84,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de un dispositivo portátil y de bajo costo para el monitoreo de estaciones de radios FM. El trabajo tendrá un presupuesto preliminar estimado de 600 horas y un costo estimado de {\$ 200}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública el \fechaFinalName.
+Por medio de la presente se acuerda con \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de un dispositivo portátil y de bajo costo para el monitoreo de estaciones de radios FM. El trabajo tendrá un presupuesto preliminar estimado de 600 horas y un costo estimado de {\$ 200}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en junio de 2025.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -99,41 +99,54 @@ Se adjunta a esta acta la planificación inicial.
 \end{tabular}
 \end{table}
 
-
-
-
 \section{1. Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
+\textbf{Contexto}
 
-El control y la regulación de las emisiones de las bandas de FM, es esencial para garantizar la calidad del servicio, detectar interferencias o asegurar el cumplimiento de las normas, por establecer unos primeros ejemplos. En Uruguay, el organismo encargado de estas normas es la URSEC (Unidad Reguladora de Servicios de Energía y Comunicaciones). Los equipos utilizados para estos fines suelen ser sofisticados, complejos y costosos. 
+El control y la regulación de las emisiones de las bandas de FM es esencial para garantizar la calidad del servicio, detectar interferencias o asegurar el cumplimiento de las normas, por establecer unos primeros ejemplos. En Uruguay, el organismo encargado de estas normas es la URSEC (Unidad Reguladora de Servicios de Energía y Comunicaciones). Los equipos utilizados para estos fines suelen ser sofisticados, complejos y costosos. 
 
-Por otro lado, hace ya algunos años que existen en el mercado periféricos llamados RTL-SDR, de bajo costo y tamaño, que son capaces de sintonizarse en diversas bandas del espectro electromagnético (VHF) y con un ancho de banda y velocidad de transferencia suficientes para poder realizar el procesamiento o la demodulación, mediante software. Estos dispositivos , que se operan mediante interfaz USB, permiten digitalizar las radio emisiones y procesarlas para algún propósito. 
+Por otro lado, desde hace algunos años existen en el mercado periféricos llamados RTL-SDR. Estos dispositivos son de bajo costo y tamaño, y pueden sintonizarse en diversas bandas del espectro electromagnético (VHF). Además, cuentan con un ancho de banda y una velocidad de transferencia suficientes para realizar el procesamiento o la demodulación de las señales mediante software. Se encuentran en el mercado diversos RTL-SDR en el entorno de los 50 USD, de diversos fabricantes y características operativas muy similares.
 
-En los últimos años también han crecido en popularidad los Raspberri Pi, y gracias también a su modesto costo, ha habido un gran crecimiento en su uso, documentación y cantidad de proyectos open source a disponibilidad. Estos dispositivos tienen diversas interfaces USB, así como también conectividad y capacidad de interfaz a diversos tipos de hardware de visualización de datos. Es un producto muy utilizado para la implementación de productos o prototipos.
-
-En el siguiente proyecto se pretende desarrollar una estación de recepción de radio portátil que permita a un usuario configurarlo para realizar diversas tareas de monitoreo, en las emisiones de radio comerciales más comunes, en particular la banda FM (80-120 MHz). Este dispositivo será fácilmente replicable con tecnologías OTS (Of The Shelf) y open source, para hacerlo de bajo costo y fácil despliegue. 
-
-Es un proyecto que integra diversos aspectos del manejo de periféricos y de sistemas para poder realizar una tarea específica, que es de interés particular para un ente regulador, pero también para radioaficionados. Además profundiza en el conocimiento de la fenomenología RF y sus aplicaciones prácticas en la electrónica. Involucra conocimientos en diversas áreas, tanto en hardware, como en software, ciencias aplicadas y gestión de proyectos.
-
-Es deseable que este dispositivo pueda ser accedible remotamente, para poder leer o guardar su información en tiempo real, como también es deseable que tenga la capacidad de algún tipo de interfaz para la visualización de datos espectrales. En principio estos requerimientos pueden ir modificando o adaptando a las necesidades del cliente a medida que se desarrolle el proyecto. 
-
-Se dispone con el hardware adecuado para la implementación de un prototipo inicial y las horas de ingeniería de un estudiante que pretende ampliar su conocimiento en el desarrollo de electrónica práctica y conocimientos en RF. El hardware consiste en un RTL-SDR (Nooelec Smart Tee Xtr) y una raspberry pi model 4B. Además, se cuenta con un conocimiento inicial básico de las tecnologías mencionadas, el cual pretende ir desarrollándose en profundidad en conjunto con el proyecto. En principio la elección del hardware inicial no debería cambiar sustancialmente las características del proyecto.
-
-Tecnologia
-
-
-El RTL-SDR, un receptor de radio definido por software (Software Defined Radio), permite sintonizar y demodular una amplia gama de frecuencias, convirtiendo señales de radio en datos digitales. Este dispositivo cuenta con un Tuner (E4000) y con un demodulador/serializador USB (Realtek R2832U). El funcionamiento interno del dispositivo queda por fuera del alcance de este proyecto, aunque es importante resaltar que es necesario para poder comprender cómo poder usar la tecnología eficientemente. En el siguiente diagrama de bloques se puede visualizar su funcionamiento a nivel abstracto:
-
-\begin{figure}[htpb]
+\begin{figure}[H]
 \centering 
-\includegraphics[width=.65\textwidth]{./Figuras/blocksPart1.png}
+\includegraphics[width=.65\textwidth]{./Figuras/RTL-SDR.png} 
+\caption{Nooelec SDR Bundle: RTL-SDR y antenas.}
+\label{fig:diagBloques}
+\end{figure}
+
+En los últimos años, la Raspberry Pi ha ganado popularidad como herramienta para implementar proyectos de bajo costo y fácil acceso. Gracias a su versatilidad y amplia documentación disponible, se utilizará en este trabajo para conectar diversos tipos de hardware de visualización de datos, así como para integrar y gestionar interfaces USB necesarias para la operación del sistema
+
+En el presente trabajo se pretende desarrollar una estación de recepción de radio portátil que permita a sus usuarios configurarlo para realizar diversas tareas de monitoreo, en las emisiones de radio comerciales más comunes, en particular la banda FM (80-120 MHz). Este dispositivo será fácilmente replicable con tecnologías OTS (Of The Shelf) y open source, para hacerlo de bajo costo y fácil despliegue. 
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=.65\textwidth]{./Figuras/Raspi4B.png} 
+\caption{Raspberry Pi model 4B.}
+\label{fig:diagBloques}
+\end{figure}
+
+Es un trabajo que integra diversos aspectos del manejo de periféricos y de sistemas para poder realizar una tarea específica, que es de interés particular para un ente regulador, pero también para radioaficionados. Además profundiza en el conocimiento de la fenomenología RF y sus aplicaciones prácticas en la electrónica. Involucra conocimientos en diversas áreas, tanto en hardware, como en software, ciencias aplicadas y gestión de proyectos.
+
+Es deseable que este dispositivo pueda ser accedible remotamente, para poder leer o guardar su información en tiempo real, como también es óptimo que tenga la capacidad de algún tipo de interfaz para la visualización de datos espectrales. En principio, estos requerimientos pueden modificarse o adaptarse a las necesidades del cliente a medida que se desarrolla el trabajo. 
+
+\textbf{Tecnología}
+
+Se dispone con el hardware adecuado para la implementación de un prototipo inicial y las horas de ingeniería de un estudiante, que pretende ampliar su conocimiento en el desarrollo de electrónica práctica y conocimientos en RF. El hardware consiste en un RTL-SDR (Nooelec Smart Tee Xtr) y una Raspberry Pi 4B. Además, se cuenta con un conocimiento inicial básico de las tecnologías mencionadas, el que pretende ir desarrollándose en profundidad en conjunto con el proyecto. En principio, la elección del hardware inicial no debería cambiar sustancialmente las características del proyecto.
+
+El RTL-SDR, un receptor de radio definido por software (Software Defined Radio), permite sintonizar y demodular una amplia gama de frecuencias, y convierte señales de radio en datos digitales. Este dispositivo cuenta con un Tuner (E4000) y con un demodulador/serializador USB (Realtek R2832U). El funcionamiento interno del dispositivo queda por fuera del alcance de este proyecto, aunque es importante resaltar que es necesario para poder comprender cómo usar la tecnología eficientemente. En el siguiente diagrama de bloques se puede visualizar su funcionamiento a nivel abstracto:
+
+\begin{figure}[h]
+\centering 
+\includegraphics[width=.85\textwidth]{./Figuras/blocksUBA.png} 
 \caption{Diagrama funcional del sistema.}
 \label{fig:diagBloques}
 \end{figure}
 
-Con un dispositivo RTL-SDR y utilizando software, es posible sintonizarse a una estación de radio FM y capturar la información necesaria, como por ejemplo, escuchar el audio codificado en ellas o medir el nivel de intensidad de la emisión. Estas funcionalidades están ampliamente documentadas y además hay diversas aplicaciones para radioaficionados que permiten rápidamente explorar las distintas posibilidades que ofrece un SDR, como por ejemplo, visualizar el espectro electromagnético a nivel gráfico.
+Con un dispositivo RTL-SDR y utilizando software, es posible sintonizarse a una estación de radio FM y capturar la información necesaria, como por ejemplo, escuchar el audio codificado en ellas o medir el nivel de intensidad de la emisión. Estas funcionalidades están ampliamente documentadas. Además, existen diversas aplicaciones para radioaficionados que permiten explorar rápidamente las posibilidades de un SDR. Por ejemplo, es posible visualizar el espectro electromagnético de manera gráfica.
 
-Este proyecto explorará diferentes enfoques para la adquisición de la mayor cantidad de información posible sobre las emisiones de las distintas emisiones en la banda FM, mediante el SDR en la plataforma Raspberry pi, evaluando la optimización de las capacidades del periférico como de la arquitectura, para poder capturar la mayor información relevante posible. 
+\textbf{Resumen}
+
+Este proyecto explorará diferentes enfoques para adquirir la mayor cantidad de información posible sobre las emisiones en la banda FM utilizando SDR en la plataforma Raspberry Pi. Se evaluará tanto la optimización de las capacidades del periférico como de la arquitectura, con el objetivo de capturar la mayor cantidad de información relevante.
 
 
 \section{2. Identificación y análisis de los interesados}
@@ -158,47 +171,46 @@ Cliente    & \clientename	      & URSEC		 	&  Director del Trabajo Final\\ \hlin
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-Se pretende desarrollar una estación portátil de radio digital, para que diversos agentes como radioaficionados o entes reguladores puedan monitorear, escuchar y/o procesar las radioemisiones que se transmiten en los distintos puntos de un territorio, o en el hogar del usuario. 
+El propósito de este proyecto es desarrollar una estación portátil de radio digital, para que diversos agentes como radioaficionados o entes reguladores puedan monitorear, escuchar y/o procesar las radioemisiones que se transmiten a los distintos puntos de un territorio, o en el hogar del usuario. 
 
-Esta estación estará embebida en el hardware apropiado y fácilmente adquirible, e inicialmente, será una Raspberry Pi 4B y un Nooelec RTL-SDR. El sistema debe ser fácilmente operable por los agentes que desean obtener información relevante. Además el sistema deberá ser autónomo, es decir, que se pueda colocar en cualquier y realizar tareas de monitoreo específicas estándard o customizadas. Para ello el sistema deberá ser modular y fácilmente escalable, para poder también idear un despliegue de muchas estaciones de radio en simultáneo.
+Esta estación estará embebida en el hardware apropiado y fácilmente adquirible. Inicialmente, será una Raspberry Pi 4B y un Nooelec RTL-SDR. El sistema debe ser fácilmente operable por los agentes que desean obtener información relevante. Además, el sistema debería ser autónomo, es decir, que se pueda colocar en cualquier lugar y realizar tareas de monitoreo específicas, ya sean estándar o personalizadas. Para ello el sistema deberá ser modular y fácilmente escalable, para poder también idear un despliegue de muchas estaciones de radio en simultáneo.
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
-
-El proyecto abarca la investigación, el diseño y la implementación del prototipo. Para ser más específicos, a continuación se itemizan los distintos aspectos:
+El proyecto abarca la investigación, el diseño y la implementación del prototipo. Para ser más específico, a continuación se itemizan los distintos aspectos:
 
 \begin{itemize}
 	\item Implementación de recepción de señales RF con el hardware inicial
 		\begin{itemize}
-		\item Investigación de fenomenología, sampleo y demodulación RF
+		\item Investigación de fenomenología, sampleo y demodulación RF.
 		\item Investigación de drivers.
-		\item Investigación de aplicaciones/software existente
+		\item Investigación de aplicaciones/software existente.
 		\end{itemize}
 	\item Caracterización de capacidades de hardware y plataforma
 		\begin{itemize}
-		\item Ancho de banda disponible y necesario
-		\item Consumo de potencia
-		\item Estimación de capacidades máximas de extracción de información relevante según hardware inicial
+		\item Ancho de banda disponible y necesario.
+		\item Consumo de potencia.
+		\item Estimación de capacidades máximas de extracción de información relevante según hardware inicial.
 		\end{itemize}
 	\item Implementación de estación de radio digital
 		\begin{itemize}
-		\item Desarrollo de software de monitoreo
-		\item Desarrollo de software de visualización de datos
-		\item Desarrollo de geologalización y conectividad remota
-		\item Integración de diversos módulos de software en el sistema final
+		\item Desarrollo de software de monitoreo.
+		\item Desarrollo de software de visualización de datos.
+		\item Desarrollo de geologalización y conectividad remota.
+		\item Integración de diversos módulos de software en el sistema final.
 		\end{itemize}
 	\item Caracterización de sistema final
 		\begin{itemize}
-		\item Límites de extracción de información del sistema
-		\item Estudio de escalabilidad del sistema final
+		\item Límites de extracción de información del sistema.
+		\item Estudio de escalabilidad del sistema final.
 		\end{itemize}
 \end{itemize}
 
 El proyecto no incluye:
 \begin{itemize}
-	\item Desarrollo de drivers USB
-	\item Despliegue/Implementación de varias estaciones de radio en simultáneo
+	\item Desarrollo de drivers USB.
+	\item Despliegue/Implementación de varias estaciones de radio en simultáneo.
 \end{itemize}
 
 
@@ -211,68 +223,81 @@ Para el desarrollo del presente proyecto se supone que:
 \begin{itemize}
 	\item Se cuenta con el hardware inicial acorde para las necesidades iniciales
 		\begin{itemize}
-		\item Ancho de banda suficiente para recibir señales de audio de al menos una radio FM en un tiempo dado
-		\item La plataforma seleccionada tiene la capacidad de potencia suficiente para mantener recepciones por tiempos continuos e indefinidos
-		\item Todos los drivers/software necesarios para su operación se encuentran ampliamente disponibles y existen muchas herramientas open source para apoyarse y colaborar
+		\item Ancho de banda suficiente para recibir señales de audio de al menos una radio FM en un tiempo dado.
+		\item La plataforma seleccionada tiene la capacidad de potencia suficiente para mantener recepciones por tiempos continuos e indefinidos.
+		\item Todos los drivers/software necesarios para su operación se encuentran ampliamente disponibles y existen muchas herramientas open source para apoyarse y colaborar.
 		\end{itemize}
-	\item Los requerimientos y especificaciones irán modificándose a medida que se desarrolle el proyecto
-	\item Se cuenta con el conocimiento y tiempo suficiente para poder implementar estas tecnologías de una manera sofisticada, con buenas prácticas, y que aproveche el máximo el hardware disponible
+	\item Los requerimientos y especificaciones irán modificándose a medida que se desarrolle el proyecto.
+	\item Se cuenta con el conocimiento y tiempo suficiente para poder implementar estas tecnologías de una manera sofisticada, con buenas prácticas, y que aproveche el máximo el hardware disponible.
 \end{itemize}
 
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red}
-Los requerimientos deben enumerarse y de ser posible estar agrupados por afinidad, por ejemplo:
+A continuación se listarán los requerimientos que deba cumplir el prototipo a desarrollarse para considerarlo exitoso:
 
 \begin{enumerate}
 	\item Requerimientos funcionales:
-		\begin{enumerate}
-			\item El sistema debe...
-			\item Tal componente debe...
-			\item El usuario debe poder...
-		\end{enumerate}
+		\begin{itemize}
+			\item El sistema debe poder realizar tareas de monitoreo básico 		autónomamente.
+			\item El sistema debe consistir únicamente en partes de hardware OTS y de fácil armado.
+			\item Los usuarios deben poder acceder al sistema remotamente para ver información de interés, o para configurar al dispositivo.
+			\item El sistema deberá mínimamente ser capaz de capturar la mayor cantidad de información relevante de al menos una emisión de radio FM en un tiempo dado.
+		\end{itemize}
 	\item Requerimientos de documentación:
-		\begin{enumerate}
-			\item Requerimiento 1.
-			\item Requerimiento 2 (prioridad menor)
-		\end{enumerate}
-	\item Requerimiento de testing...
-	\item Requerimientos de la interfaz...
-	\item Requerimientos interoperabilidad...
-	\item etc...
+		\begin{itemize}
+			\item El sistema deberá tener un manual de usuario para poder operarlo tanto en sitio como remotamente, de manera sencilla.
+			\item Se debe contar con un documento que caracterize al sistema de tal manera de conocer sus rangos de operación o de extracción de información máxima.
+		\end{itemize}
+	\item Requerimientos de operabilidad:
+		\begin{itemize}
+			\item El acceso del sistema remoto debe ser sencillo y con herramientas cotidianas (navegador web o smartphone).
+		\end{itemize}
 \end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
-
-\textbf{¡¡¡No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!}
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-	\item Ser breve y conciso (nadie lee cosas largas). 
-	\item Ser específico: no dejar lugar a confusiones.
-	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna}
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
+Se identifican determinados roles para las historias de usuario:
+
+\begin{itemize}
+	\item Usuario final (radioaficionados): Estos usuarios son personas sin un conocimiento muy amplio en la electrónica o en el mundo RF. Estos usuarios esperan tener un dispositivo fácilmente adquiribles por ellos y fácilmente operable.
+	\item Usuario final (entes reguladores): Estos operadores del dispositivo desean poder obtener diversas métricas de catacterización de las señales obtenidas. Además también van a estar interesados en qué lugar de un territorio se hicieron tales mediciones. Por último, este usuario también desea poder procesar la mayor cantidad de información relevante de manera autónoma, mediante scripts o configuración del sistema.
+	\item Proyectante: Como emprendimiento personal, se desea adquirir la mayor cantidad de formación y experiencia posible en los diversos campos que abarcan este proyecto. Se desea implementar un producto finalizado que sea escalable y modular. Se espera tener un conocimiento profundo de todo lo implementado y a la vez abstracto o de alto nivel: Conocimiento desde las operaciones mas simples hasta la interoperabilidad de distintas operaciones trabajando en simultáneo para un sistema final.
+\end{itemize}
+
+Para las historias de usuario que se presentan a continuación, se les asigna un punto de historia (\textit{history points}) en tres categorías: dificultad, complejidad y riesgo o incertidumbre. La escala de puntuación es análoga a la sucesión de Fibonacci y la suma de los puntos de historia de cada categoría representa los puntos de historias total (redondeando el número superior más próximo a la sucesión de Fibonacci).
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|} 
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Grado} & \textbf{Dificultad} & \textbf{Complejidad} & \textbf{Riesgo o Incertidumbre}\\
+\hline
+Bajo & 1 & 1 & 1\\ 
+\hline
+Medio & 3 & 5 & 8\\ 
+\hline
+Alto & 5 & 13 & 21\\ 
+\hline
+\end{tabular}
+\end{table}
+
+-----------
 Descripción: en esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
 
 Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia.
+------
 
-El formato propuesto es: 
+
 \begin{enumerate}
 \item ``Como [rol] quiero [tal cosa] para [tal otra cosa]."
 
 \textit{Story points}: 8 (complejidad: 3, dificultad: 2, incertidumbre: 3)
 \end{enumerate}
-\end{consigna}
+
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
