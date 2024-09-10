@@ -3,28 +3,21 @@
 codirector, % Uncomment to add a codirector to the title page
 ]{charter} 
 
-
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
 \titulo{Estación de radio portátil para el monitoreo de radioemisiones comerciales} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
-%\posgrado{Carrera de Especialización en Internet de las Cosas} 
-%\posgrado{Carrera de Especialización en Inteligencia Artificial}
-%\posgrado{Maestría en Sistemas Embebidos} 
-%\posgrado{Maestría en Internet de las cosas}
-% IMPORTANTE: no omitir titulaciones ni tildación en los nombres, también se recomienda escribir los nombres completos (tal cual los tienen en su documento)
-% Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Ramiro Sanes}
+\autor{Ing. Ramiro Sanes}
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Pablo Iturralde}
+\director{PhD. Pablo Iturralde}
 \pertenenciaDirector{UCU} 
-\codirector{FirmWareSpecialist} % para que aparezca en la portada se debe descomentar la opción codirector en los parámetros de documentclass
+\codirector{¿Me sugieren a alguien? Firmware Specialist} % para que aparezca en la portada se debe descomentar la opción codirector en los parámetros de documentclass
 \pertenenciaCoDirector{FIUBA}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Pablo Iturralde}
+\cliente{PhD. Pablo Iturralde}
 \empresaCliente{UCU}
  
 \fechaINICIO{20 de agosto de 2024}		%Fecha de inicio de la cursada de GdP \fechaInicioName
@@ -58,8 +51,8 @@ codirector, % Uncomment to add a codirector to the title page
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
-1      & Se completa hasta el punto 5 inclusive                & {2} de {setiembre} de 2024 \\ \hline
-%2      & Se completa hasta el punto 9 inclusive
+1      & Se completa hasta el punto 5 inclusive.                & {2} de {setiembre} de 2024 \\ \hline
+2      & Se completa hasta el punto 9 inclusive, se hacen correcciones a ver 1. & {10} de {setiembre} de 2024 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & {día} de {mes} de 202X \\ \hline
@@ -171,9 +164,9 @@ Cliente    & \clientename	      & URSEC		 	&  Director del Trabajo Final\\ \hlin
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-El propósito de este proyecto es desarrollar una estación portátil de radio digital, para que diversos agentes como radioaficionados o entes reguladores puedan monitorear, escuchar y/o procesar las radioemisiones que se transmiten a los distintos puntos de un territorio, o en el hogar del usuario. 
+El propósito de este proyecto es desarrollar una estación portátil de radio digital, para que diversos agentes como radioaficionados o entes reguladores puedan monitorear, escuchar y/o procesar las radioemisiones que se transmiten a los distintos puntos de un territorio.
 
-Esta estación estará embebida en el hardware apropiado y fácilmente adquirible. Inicialmente, será una Raspberry Pi 4B y un Nooelec RTL-SDR. El sistema debe ser fácilmente operable por los agentes que desean obtener información relevante. Además, el sistema debería ser autónomo, es decir, que se pueda colocar en cualquier lugar y realizar tareas de monitoreo específicas, ya sean estándar o personalizadas. Para ello el sistema deberá ser modular y fácilmente escalable, para poder también idear un despliegue de muchas estaciones de radio en simultáneo.
+Esta estación deberá contar con hardware apropiado: fácilmente adquirible y de bajo costo. Inicialmente, será una Raspberry Pi 4B y un Nooelec RTL-SDR. El sistema debe ser fácilmente operable por los agentes que desean obtener información relevante. Además, el sistema debe ser autónomo, es decir, que pueda realizar tareas de monitoreo específicas de manera automática, ya sean estándar o personalizadas. El sistema final debe ser modular y escalable, de forma en que se puedan desplegar, al menos en los papeles, varios dispositivos en simultáneo en una plataforma unificadora.
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
@@ -239,18 +232,20 @@ A continuación se listarán los requerimientos que deba cumplir el prototipo a 
 \begin{enumerate}
 	\item Requerimientos funcionales:
 		\begin{itemize}
-			\item El sistema debe poder realizar tareas de monitoreo básico 		autónomamente.
-			\item El sistema debe consistir únicamente en partes de hardware OTS y de fácil armado.
-			\item Los usuarios deben poder acceder al sistema remotamente para ver información de interés, o para configurar al dispositivo.
-			\item El sistema deberá mínimamente ser capaz de capturar la mayor cantidad de información relevante de al menos una emisión de radio FM en un tiempo dado.
+			\item El sistema debe consistir únicamente en partes de hardware OTS y de armado sencillo.
+			\item Fácil despliegue.
+			\item El sistema deberá mínimamente ser capaz de capturar la mayor cantidad de información relevante de al menos una emisión de radio FM en un tiempo dado (audio en principio, podria ser potencia o GPS que eventualmente voy a necesitar, pero no se si comprar uno, o si implementarlo con el SDR, perdon por este parentesis, es que mi proyecto me lo estoy definiendo a la carrera y no tengo director aun!).
+			\item El software necesario debe estar unificado en una aplicación de ser posible (mariano: no tengo idea de software, invento cosas).
 		\end{itemize}
 	\item Requerimientos de documentación:
 		\begin{itemize}
-			\item El sistema deberá tener un manual de usuario para poder operarlo tanto en sitio como remotamente, de manera sencilla.
+			\item El sistema deberá tener un manual de usuario para poder operarlo, tanto en sitio como remotamente, de manera sencilla.
 			\item Se debe contar con un documento que caracterize al sistema de tal manera de conocer sus rangos de operación o de extracción de información máxima.
 		\end{itemize}
 	\item Requerimientos de operabilidad:
 		\begin{itemize}
+			\item El sistema debe realizar alguna tarea de monitoreo básico autónomamente y almacenar determinada información por defecto.
+			\item El sistema debe realizar tareas personalizadas que un usuario común o experto pueda implementar y configurar mediante algún script.
 			\item El acceso del sistema remoto debe ser sencillo y con herramientas cotidianas (navegador web o smartphone).
 		\end{itemize}
 \end{enumerate}
@@ -261,9 +256,9 @@ A continuación se listarán los requerimientos que deba cumplir el prototipo a 
 Se identifican determinados roles para las historias de usuario:
 
 \begin{itemize}
-	\item Usuario final (radioaficionados): Estos usuarios son personas sin un conocimiento muy amplio en la electrónica o en el mundo RF. Estos usuarios esperan tener un dispositivo fácilmente adquiribles por ellos y fácilmente operable.
-	\item Usuario final (entes reguladores): Estos operadores del dispositivo desean poder obtener diversas métricas de catacterización de las señales obtenidas. Además también van a estar interesados en qué lugar de un territorio se hicieron tales mediciones. Por último, este usuario también desea poder procesar la mayor cantidad de información relevante de manera autónoma, mediante scripts o configuración del sistema.
-	\item Proyectante: Como emprendimiento personal, se desea adquirir la mayor cantidad de formación y experiencia posible en los diversos campos que abarcan este proyecto. Se desea implementar un producto finalizado que sea escalable y modular. Se espera tener un conocimiento profundo de todo lo implementado y a la vez abstracto o de alto nivel: Conocimiento desde las operaciones mas simples hasta la interoperabilidad de distintas operaciones trabajando en simultáneo para un sistema final.
+	\item \textbf{Radioaficionados}: Estos usuarios son personas sin un conocimiento muy amplio en la electrónica o en el mundo RF. Estos usuarios esperan tener un dispositivo fácilmente adquiribles por ellos y fácilmente operable.
+	\item \textbf{Entes reguladores}: Estos operadores del dispositivo desean poder obtener diversas métricas de catacterización de las señales obtenidas. Además también van a estar interesados en qué lugar de un territorio se hicieron tales mediciones. Por último, este usuario también desea poder procesar la mayor cantidad de información relevante de manera autónoma, mediante scripts o configuración del sistema.
+	\item \textbf{Estudiante}: Como emprendimiento personal, se desea adquirir la mayor cantidad de formación y experiencia posible en los diversos campos que abarcan este proyecto. Se desea implementar un producto finalizado que sea escalable y modular. Se espera tener un conocimiento profundo de todo lo implementado y a la vez abstracto o de alto nivel. Un onocimiento desde las operaciones mas simples hasta la interoperabilidad de distintas operaciones trabajando en simultáneo para un sistema final.
 \end{itemize}
 
 Para las historias de usuario que se presentan a continuación, se les asigna un punto de historia (\textit{history points}) en tres categorías: dificultad, complejidad y riesgo o incertidumbre. La escala de puntuación es análoga a la sucesión de Fibonacci y la suma de los puntos de historia de cada categoría representa los puntos de historias total (redondeando el número superior más próximo a la sucesión de Fibonacci).
@@ -273,7 +268,8 @@ Para las historias de usuario que se presentan a continuación, se les asigna un
 \centering
 \begin{tabular}{|c|c|c|c|} 
 \hline
-\rowcolor[HTML]{C0C0C0} 
+\rowcolor[HTML]{C0C0C0}
+\hline 
 \textbf{Grado} & \textbf{Dificultad} & \textbf{Complejidad} & \textbf{Riesgo o Incertidumbre}\\
 \hline
 Bajo & 1 & 1 & 1\\ 
@@ -285,72 +281,113 @@ Alto & 5 & 13 & 21\\
 \end{tabular}
 \end{table}
 
------------
-Descripción: en esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
-
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia.
-------
-
+A partir de los roles y métricas definidas anteriormente, se procede a desmenuzar el proyecto como una serie de hitos o logros principales que resumen al sistema a desarrollarse. Estos estan concebidos como una historia de usuario por cada rol. Cada una de estas historias de usuario conlleva muchas subtareas a desarrollarse para cumplirlas, pero en principio podemos orientar al proyecto según ellas:
 
 \begin{enumerate}
-\item ``Como [rol] quiero [tal cosa] para [tal otra cosa]."
-
-\textit{Story points}: 8 (complejidad: 3, dificultad: 2, incertidumbre: 3)
+	\item Como \textit{radioaficionado} quiero un \textit{producto} para \textit{sintonizar} y \textit{escuchar} emisiones de \textit{radio FM}.
+		\begin{itemize}
+			\item Dificultad: 5.
+			\item Complejidad: 3.
+			\item Riesgo o Incertidumbre: 1.
+			\item \textbf{Total}: 9.
+		\end{itemize}
+	\item Como \textit{ente regulador} quiero una \textit{herramienta} para \textit{analizar} y \textit{monitorear} las diversas emisiones de \textit{radio FM} en los diversos puntos de un territorio para \textit{controlar} que se cumplan determinadas normativas.
+		\begin{itemize}
+			\item Dificultad: 8.
+			\item Complejidad: 5.
+			\item Riesgo o Incertidumbre: 3.
+			\item \textbf{Total}: 16.
+		\end{itemize}
+	\item Como \textit{estudiante} quiero un \textit{conocimiento} y \textit{dominio} de las \textit{tecnologías involucradas} para ampliar mi perfil profesional y capacidades de \textit{crear productos electrónicos de fácil adquisición, ensamblaje e implementación} en esta u otras plataformas.
+		\begin{itemize}
+			\item Dificultad: 13.
+			\item Complejidad: 13.
+			\item Riesgo o Incertidumbre: 1.
+			\item \textbf{Total}: 27.
+		\end{itemize}
 \end{enumerate}
 
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-Los entregables del proyecto son (ejemplo):
+El trabajo se considerará cerrado y culminado cuando se cumplan determinados entregables:
 
 \begin{itemize}
-	\item Manual de usuario.
-	\item Diagrama de circuitos esquemáticos.
-	\item Código fuente del firmware.
-	\item Diagrama de instalación.
+	\item BOM y costo total de adquisición y/o operación.
+	\item Manual de instalación, operación y uso.
+	\item Repositorio público con todo el software necesario para la implementación del producto en las diversas plataformas.
+	\item Documentación sobre la caracterización del producto: Cantidad de información relevante que pueda ser capturada en tiempo real.
+	\item Demostración del producto: cumplimiento de requerimientos.
 	\item Memoria del trabajo final.
-	\item etc...
 \end{itemize}
-\end{consigna}
+
 
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
+Se descompone el trabajo en distintas tareas atómicas de tal forma de poder dar seguimiento y poder gestionar acertadamente los recursos temporales y de ejecución entre distintas tareas. Estas tareas atómicas están organizadas en categorías generales en las que se detallan en negrita la suma de todas las tareas atómicas de la categoría dada.
 
 \begin{enumerate}
-\item Grupo de tareas 1 (suma h)
-	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\end{enumerate}
-\item Grupo de tareas 2 (suma h)
-	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\end{enumerate}
-\item Grupo de tareas 3 (suma h)
-	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\item Tarea 4 (tantas h)
-	\item Tarea 5 (tantas h)
-	\end{enumerate}
+	\item Planificación del proyecto (\textbf{40 h})
+		\begin{itemize}
+			\item Definición de proyecto, alcances, requerimientos, WBS y plan de trabajo (20 h)
+			\item Presentación y exposición del proyecto (20 h)
+		\end{itemize}
+	\item Investigación sobre las tecnologías a utilizar (\textbf{60 h})
+		\begin{itemize}
+			\item Caracterización del RTL-SDR adquirido  (10 h)
+			\item Caracterización del Raspberry Pi adquirido (10 h)
+			\item Investigación en comunicaciones RF y procesamiento de señales digitales básico (10 h)
+			\item Investigación de sistemas operativos, software y drivers existentes (10 h)
+			\item Selección en base a investigación de paquete de SW a utilizar (10 h)
+			\item Captura, almacenamiento y visualización inicial (10 h)
+		\end{itemize}
+	\item Desarrollo (\textbf{205 h})
+		\begin{itemize}
+			\item Implementación de sistema operativo, software y drivers (15h)
+			\item Implementación de primera recepción de estaciones FM (25 h)
+			\item Implementación de visualización de datos espectrales (25 h)
+			\item Implementación de procesamiento digital de datos obtenidos (audio) (15 h)
+			\item Implementación de almacenamiento eficiente de información obtenida (25 h)
+			\item Implementación de aplicación general unificadora (50 h)
+			\item Impementación de acceso remoto (25 h)
+			\item Implementación de API (25 h)
+		\end{itemize}
+	\item Caracterización (\textbf{100 h})
+		\begin{itemize}
+			\item Consumo de ancho de banda de interfaz USB (25 h)
+			\item Perfiles de consumo de potencia (25 h)
+			\item Uso de memoria (25 h)
+			\item Transferencia de datos (25 h)		
+		\end{itemize}
+	\item Iteración de desarrollo  (\textbf{130 h})
+		\begin{itemize}
+			\item Implementación de GPS (40 h)
+			\item Maximización de recursos del sistema para obtener más información (25 h)
+			\item Definición de tipo de \textit{power source} a utilizar (25 h)
+			\item Testeos (50 h)		
+		\end{itemize}
+	\item Demostración (\textbf{30 h})
+		\begin{itemize}
+			\item Integración del sistema (15 h)
+			\item Pruebas de funcionamiento del sistema completo (15 h)
+		\end{itemize}
+	\item Documentación (\textbf{60 h})
+		\begin{itemize}
+			\item Manual de uso rápido (10 h)
+			\item Manual de uso general (20 h)
+			\item Repositorio documentado y prolijo (20 h)
+			\item BOM y caracterización de capacidades (10 h)
+		\end{itemize}
+	\item Presentación y defensa (\textbf{20 h})
+		\begin{itemize}
+			\item Armado presentación (10 h)
+			\item Exposición de proyecto final (10 h)
+		\end{itemize}	
 \end{enumerate}
 
-Cantidad total de horas: tantas.
-
-\textbf{¡Importante!:} la unidad de horas es h y va separada por espacio del número. Es incorrecto escribir ``23hs".
-
-\textbf{Se recomienda que no haya ninguna tarea que lleve más de 40 h.} De ser así se recomienda dividirla en tareas de menor duración.
-
-\end{consigna}
+Cantidad total de horas: 645.
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
